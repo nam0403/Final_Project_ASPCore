@@ -1,0 +1,53 @@
+﻿@model FilesCRUD.Models.Files
+
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Add File</h2>
+    </div>
+
+    <form method="post">
+        <div asp-validation-summary="All"></div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Name"> Name </label>
+                <input type="text" class="form-control mb-3" asp-for="Name" placeholder="Enter Name">
+                <span asp-validation-for="Name" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="ModifiedAt"> Modified </label>
+                <input type="date" class="form-control mb-3" asp-for="ModifiedAt" placeholder="Enter Modified Time">
+                <span asp-validation-for="ModifiedAt" class=" alert-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6 mb-3">
+                <label asp-for="ModifiedBy"> Modified By </label>
+                <input type="text" class="form-control" asp-for="ModifiedBy">
+                <span asp-validation-for="ModifiedBy" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <label asp-for="Extension"> File Extension </label>
+                <input type="text" class="form-control" asp-for="Extension">
+                <span asp-validation-for="Extension" class=" alert-danger"></span>
+            </div>
+            <div class="form-group col-md-6 mb-3">
+                <input type="hidden" class="form-control"  value = "file" asp-for="type">
+            </div>
+        </div>
+        <div class="button">
+        <button type="submit" class="custom_btn"></i>Save</button>
+        <a asp-controller="Files" asp-action="Index" class="custom_btn">Back To List</a>
+        </div>
+    </form>
+
+</div>
+
+
+@*//for front end validations*@
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

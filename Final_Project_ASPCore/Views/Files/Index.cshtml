@@ -1,0 +1,87 @@
+﻿@using FilesCRUD.Models;
+@using FolderCRUD.Models;
+@using MyProject.ViewModels
+
+@model IEnumerable<Files>
+
+@*@model IEnumerable<FolderFilesViewModel>*@
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["ResultOk"] != null)
+{
+    <h1 class="alert-success">@TempData["ResultOk"]</h1>
+}
+@if (TempData["Message"] != null )
+{
+    <h5 class="form-popup">@TempData["Message"]</h5>
+    <div class="popup">
+        <span class="popuptext" id="myPopup">Popup text...</span>
+    </div>
+}
+
+<div class="container py-4 px-3 mx-auto">
+    <h3 class="document">Documents</h3>
+    <table class="table table-bordered table-hover" id="table">
+        <thead>
+            <tr>
+                <th scope="col"> <img src="~/images/file.png" alt="File Extension" width="32" height="32">  </th>
+                
+                <th scope="col">
+                    Name <i class="bi bi-chevron-down" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onclick="sortTable('&gt;',1)"> A-Z </a></li>
+                        <li><a class="dropdown-item" onclick="sortTable('&lt;',1)"> Z-A </a></li>
+                    </ul>
+                </th>
+                <th scope="col">
+                    Modified <i class="bi bi-chevron-down" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onclick="sortTable('&gt;',2)"> A-Z </a></li>
+                        <li><a class="dropdown-item" onclick="sortTable('&lt;',2)"> Z-A </a></li>
+                    </ul>
+                </th>
+                <th scope="col">
+                    Modified By <i class="bi bi-chevron-down" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" onclick="sortTable('&gt;',3)"> A-Z </a></li>
+                        <li><a class="dropdown-item" onclick="sortTable('&lt;',3)"> Z-A </a></li>
+                    </ul>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr class="col-1">
+                    <td width="5%">
+                        <img src="~/images/@(item.Extension).png" alt="File Extension" width="32" height="32">
+                    </td>
+                    <td width="25%">
+                        @item.Name
+                    </td>
+                    <td width="20%">
+                        @item.ModifiedAt
+                    </td>
+                    <td width="25%">
+                        @item.ModifiedBy
+                    </td>
+                    <td width="12%">
+                        <div role="group" class="w-40 btn-group">
+                            <a asp-controller="Files" asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-sm btn-primary"><i class="bi bi-pencil-square"></i></a>&nbsp;
+                            <a asp-controller="Files" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i></a>
+                            <a asp-controller="Files" asp-action="DownloadFile" asp-route-id="@item.Id" class="btn btn-sm btn-primary"><i class="bi bi-download"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <script>
+        sortTable();
+    </script>
+</div>

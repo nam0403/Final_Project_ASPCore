@@ -1,0 +1,110 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.custom {
+    text-decoration: none;
+    color: black;
+}
+
+.nav-item {
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.bi {
+    color: purple;
+    font-style: normal;
+    margin-right: 0px;
+    padding: 5px;
+}
+
+.text {
+    font-style: normal;
+    align-self: center;
+}
+
+.navbar-nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 0.5;
+    justify-content: space-between;
+}
+
+.btn {
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    display: flex;
+}
+.custom_btn {
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    display: flex;
+    color: black;
+    border: none;
+}
+.button {
+    flex-direction:row;
+    display: flex;
+
+}
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+    }
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+ }

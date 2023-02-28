@@ -1,0 +1,42 @@
+Excercise
+
+In the IT company, the HR department would like to systematize the current employees, and project as below:
+
+A list to manage employees
++ First name, 
++ Last name, 
++ Email address, 
++ Short description of them-self (HTML supported), 
++ Multi-choice field of programming languages they know (C#, F#, Visual Basic, Java, Jquery, AngularJS, Other)
+
+A list of project
++ Name of project
++ Start date
++ End date
++ Leader (Look up field refer to the list above)
++ Members (Look up field refers to the list above)
++ Description 
++ State: Signed, Design, Development, Maintenance, Closed
+
+Document of project
++ Title
++ Description
++ Linked project item
++ Type of document (single choice): Business requirement, Technical document, User guide
+
+
+
+Based on that, please do the followings
+
+- Create a team site collection for this IT company
+- Add a text "Welcome to Precio Fishbone" in the home page
+- Create an Article page to introduce HR department. Add a link in this article page to redirect to the HR sub site below
+- Use Managed Navigation with 2 top node: "Start" for home page and "HR" for "HR" page
+- Create a sub site for HR department (team site)
+- Create Employees list
+- Create Projects list
+- Create Project Documents library
+- Create the content types (Employee, Project, Project Document) with required fields above and assign to above lists.
+- Create items for earch list.
+- In the home page of the HR site- Add a List view web part to display the In-progress project  (Have blank end date and except of Closed projects)
+https://uithcm.sharepoint.com/sites/TrainSharePoint
