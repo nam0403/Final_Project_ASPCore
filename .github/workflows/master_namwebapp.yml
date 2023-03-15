@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'NamWebApp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_657B7FD153404E9885DF9D9B8E7DB550 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99AA48A13E234D9E9198E5245B4DED32 }}
           package: .
