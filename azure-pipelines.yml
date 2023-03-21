@@ -38,7 +38,6 @@ steps:
     command: build
     projects: 'Final_Project_ASPCore/Final_Project_ASPCore.csproj'
     arguments: '--configuration $(buildConfiguration)'
-steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
