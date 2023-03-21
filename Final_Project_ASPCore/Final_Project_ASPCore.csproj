@@ -26,7 +26,6 @@
     <PackageReference Include="Microsoft.Identity.Web" Version="1.26.0" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.26.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.4" />
-    <PackageReference Include="Microsoft.AspNetCore.App.Runtime.linux-x64" Version="7.0.4" />
   </ItemGroup>
 
 </Project>
