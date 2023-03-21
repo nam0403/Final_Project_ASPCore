@@ -21,6 +21,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.4" />
     <PackageReference Include="Microsoft.Identity.Client" Version="4.50.0" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.26.0" />
     <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.26.0" />
