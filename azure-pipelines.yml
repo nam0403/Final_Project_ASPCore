@@ -49,3 +49,14 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
+- task: UseYUNIQLCLI@1
+  inputs:
+    version: 'latest'
+- task: RunYUNIQLCLI@1
+  inputs:
+    version: 'latest'
+    connectionString: 'Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
+    workspacePath: '$(Build.SourcesDirectory)\Final_Project_ASPCore\Migrations'
+    targetPlatform: 'SqlServer'
+    additionalArguments: '--debug'
+    autoCreateDatabase: true
