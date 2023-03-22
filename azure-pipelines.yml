@@ -81,4 +81,4 @@ steps:
     azureSubscription: Nam-Connection
     appType: 'webApp'
     WebAppName: 'Nam-Web-App'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/_nam0403.Final_Project_ASPCore/20230322.11/myWebsiteName/Final_Project_ASPCore.zip'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
