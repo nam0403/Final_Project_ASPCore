@@ -84,7 +84,7 @@ steps:
     #SqlPassword: # string. Required when AuthenticationType = server. Password. 
     #aadSqlUsername: # string. Required when AuthenticationType = aadAuthenticationPassword. Login. 
     #aadSqlPassword: # string. Required when AuthenticationType = aadAuthenticationPassword. Password. 
-    ConnectionString: Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ConnectionString: 'Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
   # Deployment Package
     deployType: 'SqlTask' # 'DacpacTask' | 'SqlTask' | 'InlineSqlTask'. Alias: TaskNameSelector. Required. Deploy type. Default: DacpacTask.
     DeploymentAction: 'Publish' # 'Publish' | 'Extract' | 'Export' | 'Import' | 'Script' | 'DriftReport' | 'DeployReport'. Required when TaskNameSelector = DacpacTask. Action. Default: Publish.
