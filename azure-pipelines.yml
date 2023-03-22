@@ -56,6 +56,7 @@ steps:
     command: custom
     custom: 'ef '
     arguments: migrations script --output $(Build.SourcesDirectory)/SQL/setupdatabase.sql --idempotent --project $(Build.SourcesDirectory)/Final_Project_ASPCore/Final_Project_ASPCore.csproj --context ApplicationDbContext
+    
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
@@ -63,6 +64,7 @@ steps:
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
 # this code takes all the files in $(Build.ArtifactStagingDirectory) and uploads them as an artifact of your build.
+
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
@@ -72,15 +74,11 @@ steps:
   inputs:
     PathtoPublish: $(Build.SourcesDirectory)/SQL/setupdatabase.sql
     ArtifactName: SQLScripts
-- task: SqlAzureDacpacDeployment@1
+    
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
   inputs:
-    azureConnectionType: 'ConnectedServiceName' # 'ConnectedServiceName' | 'ConnectedServiceNameARM'. Alias: ConnectedServiceNameSelector. Azure Service Connection Type. Default: ConnectedServiceNameARM. 
-    azureClassicSubscription: Nam-Connect
-  # SQL Database
-    AuthenticationType: 'connectionString'  # 'server' | 'aadAuthenticationPassword' | 'aadAuthenticationIntegrated' | 'connectionString' | 'servicePrincipal'. Required. Authentication Type. Default: server.
-    ConnectionString: 'Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-  # Deployment Package
-    deployType: 'SqlTask' # 'DacpacTask' | 'SqlTask' | 'InlineSqlTask'. Alias: TaskNameSelector. Required. Deploy type. Default: DacpacTask.
-    DeploymentAction: 'Publish' # 'Publish' | 'Extract' | 'Export' | 'Import' | 'Script' | 'DriftReport' | 'DeployReport'. Required when TaskNameSelector = DacpacTask. Action. Default: Publish.
-    SqlFile: $(Build.SourcesDirectory)/SQL/setupdatabase.sql # string. Required when TaskNameSelector = SqlTask. SQL Script. 
-    IpDetectionMethod: 'AutoDetect'
+    azureSubscription: Nam-Connection
+    appType: 'webApp'
+    WebAppName: 'Nam-Web-App'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/_nam0403.Final_Project_ASPCore/myWebsiteName/Final_Project_ASPCore.zip'
