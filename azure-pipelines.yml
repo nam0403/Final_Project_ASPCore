@@ -74,7 +74,8 @@ steps:
     ArtifactName: SQLScripts
 - task: SqlAzureDacpacDeployment@1
   inputs:
-    azureSubscription: # string. Alias: ConnectedServiceNameARM. Required when ConnectedServiceNameSelector = ConnectedServiceNameARM. Azure Subscription. 
+    azureConnectionType: 'ConnectedServiceName' # 'ConnectedServiceName' | 'ConnectedServiceNameARM'. Alias: ConnectedServiceNameSelector. Azure Service Connection Type. Default: ConnectedServiceNameARM. 
+    azureClassicSubscription: Nam-Connection 
   # SQL Database
     AuthenticationType: 'connectionString'  # 'server' | 'aadAuthenticationPassword' | 'aadAuthenticationIntegrated' | 'connectionString' | 'servicePrincipal'. Required. Authentication Type. Default: server.
     #ServerName: # string. Required when AuthenticationType = server || AuthenticationType = aadAuthenticationPassword || AuthenticationType = aadAuthenticationIntegrated || AuthenticationType = servicePrincipal. Azure SQL Server. 
