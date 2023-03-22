@@ -77,11 +77,16 @@ steps:
     
 - download: current
   artifact: Nam-Web-App
-  
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: Nam-Web-App.pubxml
+
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App Service'
   inputs:
-    azureSubscription: Nam-Connection
+    ConnectionType: 'PublishProfile'
+    PublishProfilePath: '$(Agent.TempDirectory)/Nam-Web-App.pubxml'
+    PublishProfilePassword: 123ChangMe
     appType: 'webApp'
     WebAppName: 'Nam-Web-App'
     packageForLinux: ' $(Pipeline.Workspace)/Nam-Web-App/Final_Project_ASPCore.zip'
