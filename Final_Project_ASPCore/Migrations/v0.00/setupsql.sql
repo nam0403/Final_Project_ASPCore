@@ -1,0 +1,20 @@
+CREATE TABLE Folders (
+  Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  Name NVARCHAR(MAX) NOT NULL,
+  ModifiedAt DATETIME2 NULL,
+  FolderId INT NULL,
+  CONSTRAINT FK_Folders_Folders FOREIGN KEY (FolderId) REFERENCES Folders(Id)
+);
+
+CREATE TABLE Files (
+  Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+  Name NVARCHAR(MAX) NOT NULL,
+  ModifiedBy NVARCHAR(MAX) NOT NULL,
+  ModifiedAt DATETIME2 NULL,
+  Extension NVARCHAR(MAX) NOT NULL,
+  FolderId INT NULL,
+  CONSTRAINT FK_Files_Folders FOREIGN KEY (FolderId) REFERENCES Folders(Id)
+);
+
+CREATE INDEX IX_Files_FolderId ON Files(FolderId);
+CREATE INDEX IX_Folders_FolderId ON Folders(FolderId);

@@ -29,4 +29,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\_pre\" />
+    <Folder Include="Migrations\_post\" />
+    <Folder Include="Migrations\_init\" />
+    <Folder Include="Migrations\_erase\" />
+    <Folder Include="Migrations\_draft\" />
+    <Folder Include="Migrations\v0.00\" />
+  </ItemGroup>
+
 </Project>
