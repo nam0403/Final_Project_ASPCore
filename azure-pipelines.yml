@@ -86,7 +86,7 @@ steps:
   inputs:
     ConnectionType: 'PublishProfile'
     PublishProfilePath: '$(Agent.TempDirectory)/Nam-Web-App.pubxml'
-    PublishProfilePassword: 123ChangMe
+    PublishProfilePassword: 123ChangeMe
     appType: 'webApp'
     WebAppName: 'Nam-Web-App'
     packageForLinux: ' $(Pipeline.Workspace)/Nam-Web-App/Final_Project_ASPCore.zip'
