@@ -78,23 +78,9 @@ steps:
     azureClassicSubscription: Nam-Connect
   # SQL Database
     AuthenticationType: 'connectionString'  # 'server' | 'aadAuthenticationPassword' | 'aadAuthenticationIntegrated' | 'connectionString' | 'servicePrincipal'. Required. Authentication Type. Default: server.
-    #ServerName: # string. Required when AuthenticationType = server || AuthenticationType = aadAuthenticationPassword || AuthenticationType = aadAuthenticationIntegrated || AuthenticationType = servicePrincipal. Azure SQL Server. 
-    #DatabaseName: # string. Required when AuthenticationType = server || AuthenticationType = aadAuthenticationPassword || AuthenticationType = aadAuthenticationIntegrated || AuthenticationType = servicePrincipal. Database. 
-    #SqlUsername: # string. Required when AuthenticationType = server. Login. 
-    #SqlPassword: # string. Required when AuthenticationType = server. Password. 
-    #aadSqlUsername: # string. Required when AuthenticationType = aadAuthenticationPassword. Login. 
-    #aadSqlPassword: # string. Required when AuthenticationType = aadAuthenticationPassword. Password. 
     ConnectionString: 'Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
   # Deployment Package
     deployType: 'SqlTask' # 'DacpacTask' | 'SqlTask' | 'InlineSqlTask'. Alias: TaskNameSelector. Required. Deploy type. Default: DacpacTask.
     DeploymentAction: 'Publish' # 'Publish' | 'Extract' | 'Export' | 'Import' | 'Script' | 'DriftReport' | 'DeployReport'. Required when TaskNameSelector = DacpacTask. Action. Default: Publish.
-    #DacpacFile: # string. Required when DeploymentAction = Publish || DeploymentAction = Script || DeploymentAction = DeployReport. DACPAC File. 
-    #BacpacFile: # string. Required when DeploymentAction = Import. BACPAC File. 
     SqlFile: $(Build.SourcesDirectory)/SQL/setupdatabase.sql # string. Required when TaskNameSelector = SqlTask. SQL Script. 
-    #SqlInline: # string. Required when TaskNameSelector = InlineSqlTask. Inline SQL Script. 
-    #PublishProfile: # string. Optional. Use when TaskNameSelector = DacpacTask || DeploymentAction = Script || DeploymentAction = DeployReport. Publish Profile. 
-    #AdditionalArguments: # string. Optional. Use when TaskNameSelector = DacpacTask || DeploymentAction = Extract || DeploymentAction = Export || DeploymentAction = Import || DeploymentAction = Script || DeploymentAction = DeployReport || DeploymentAction = DriftReport. Additional SqlPackage.exe Arguments. 
-    #SqlAdditionalArguments: # string. Optional. Use when TaskNameSelector = SqlTask. Additional Invoke-Sqlcmd Arguments. 
-    #InlineAdditionalArguments: # string. Optional. Use when TaskNameSelector = InlineSqlTask. Additional Invoke-Sqlcmd Arguments. 
-  # Firewall
     IpDetectionMethod: 'AutoDetect'
