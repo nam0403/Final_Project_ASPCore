@@ -75,7 +75,7 @@ steps:
 - task: SqlAzureDacpacDeployment@1
   inputs:
     azureConnectionType: 'ConnectedServiceName' # 'ConnectedServiceName' | 'ConnectedServiceNameARM'. Alias: ConnectedServiceNameSelector. Azure Service Connection Type. Default: ConnectedServiceNameARM. 
-    azureClassicSubscription: Nam-Connection 
+    azureClassicSubscription: Nam-Connect
   # SQL Database
     AuthenticationType: 'connectionString'  # 'server' | 'aadAuthenticationPassword' | 'aadAuthenticationIntegrated' | 'connectionString' | 'servicePrincipal'. Required. Authentication Type. Default: server.
     #ServerName: # string. Required when AuthenticationType = server || AuthenticationType = aadAuthenticationPassword || AuthenticationType = aadAuthenticationIntegrated || AuthenticationType = servicePrincipal. Azure SQL Server. 
