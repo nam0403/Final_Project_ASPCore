@@ -33,11 +33,29 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 - task: DotNetCoreCLI@2
+  displayName: New Manifest for tool
+  inputs:
+    command: custom
+    custom: 'new '
+    arguments: tool-manifest
+- task: DotNetCoreCLI@2
+  displayName: Install EF Tool
+  inputs:
+    command: custom
+    custom: 'tool '
+    arguments: install dotnet-ef
+- task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: build
     projects: 'Final_Project_ASPCore/Final_Project_ASPCore.csproj'
     arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  displayName: Create SQL Scripts
+  inputs:
+    command: custom
+    custom: 'ef '
+    arguments: migrations script --output $(Build.SourcesDirectory)/SQL/setupdatabase.sql --idempotent --project $(Build.SourcesDirectory)/Final_Project_ASPCore/Final_Project_ASPCore.csproj --context ApplicationDbContext
 - task: DotNetCoreCLI@2
   inputs:
     command: publish
@@ -49,14 +67,8 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
-- task: UseYUNIQLCLI@1
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: SQLScripts'
   inputs:
-    version: 'latest'
-- task: RunYUNIQLCLI@1
-  inputs:
-    version: 'latest'
-    connectionString: 'Server=tcp:nam-web-app-server.database.windows.net,1433;Initial Catalog=Nam-Web-app;Persist Security Info=False;User ID=nam-web-app-server-admin;Password=123ChangeMe;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;'
-    workspacePath: '$(Build.SourcesDirectory)\Final_Project_ASPCore\Migrations'
-    targetPlatform: 'SqlServer'
-    additionalArguments: '--debug'
-    autoCreateDatabase: true
+    PathtoPublish: $(Build.SourcesDirectory)/SQL/setupdatabase.sql
+    ArtifactName: SQLScripts
