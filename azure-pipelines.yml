@@ -76,7 +76,7 @@ steps:
     ArtifactName: SQLScripts
     
 - download: current
-  artifact: WebApp
+  artifact: Nam-Web-App
   
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App Service'
