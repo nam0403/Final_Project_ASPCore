@@ -80,13 +80,24 @@ steps:
 - task: DownloadSecureFile@1
   inputs:
     secureFile: Nam-Web-App.pubxml
-
-- task: AzureRmWebAppDeployment@4
-  displayName: 'Deploy Azure App Service'
+# Azure Web App v1
+# Deploy an Azure Web App for Linux or Windows.
+- task: AzureWebApp@1
   inputs:
-    ConnectionType: 'PublishProfile'
-    PublishProfilePath: '$(Agent.TempDirectory)/Nam-Web-App.pubxml'
-    PublishProfilePassword: 123ChangeMe
-    appType: 'webApp'
-    WebAppName: 'Nam-Web-App'
-    packageForLinux: ' $(Pipeline.Workspace)/Nam-Web-App/Final_Project_ASPCore.zip'
+    azureSubscription: Nam-Connection # string. Required. Azure subscription. 
+    appType: 'webApp' # 'webApp' | 'webAppLinux'. Required. App type. 
+    appName: Nam-Web-App # string. Required. App name. 
+    #deployToSlotOrASE: false # boolean. Optional. Use when appType != "". Deploy to Slot or App Service Environment. Default: false.
+    #resourceGroupName: # string. Required when deployToSlotOrASE = true. Resource group. 
+    #slotName: 'production' # string. Required when deployToSlotOrASE = true. Slot. Default: production.
+    package: '$(Pipeline.Workspace)/Nam-Web-App/Final_Project_ASPCore.zip' # string. Required. Package or folder. Default: $(System.DefaultWorkingDirectory)/**/*.zip.
+    #customDeployFolder: # string. Optional. Use when package EndsWith .war. Custom Deploy Folder. 
+    #runtimeStack: # string. Optional. Use when appType = webAppLinux. Runtime stack. 
+    #startUpCommand: # string. Optional. Use when appType = webAppLinux. Startup command. 
+  # Application and Configuration Settings
+    #customWebConfig: # string. Optional. Use when appType != webAppLinux && package NotEndsWith .war. Generate web.config parameters for Python, Node.js, Go and Java apps. 
+    #appSettings: # string. App settings. 
+    #configurationStrings: # string. Configuration settings. 
+  # Additional Deployment Options
+    deploymentMethod: 'zipDeploy' # 'auto' | 'zipDeploy' | 'runFromPackage'. Required. Deployment method. Default: auto.
+
