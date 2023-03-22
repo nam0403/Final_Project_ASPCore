@@ -68,17 +68,20 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'myWebsiteName'
+    artifactName: 'Nam-Web-App'
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: SQLScripts'
   inputs:
     PathtoPublish: $(Build.SourcesDirectory)/SQL/setupdatabase.sql
     ArtifactName: SQLScripts
     
+- download: current
+  artifact: WebApp
+  
 - task: AzureRmWebAppDeployment@4
   displayName: 'Deploy Azure App Service'
   inputs:
     azureSubscription: Nam-Connection
     appType: 'webApp'
     WebAppName: 'Nam-Web-App'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: ' $(Pipeline.Workspace)/Nam-Web-App/Final_Project_ASPCore.zip'
